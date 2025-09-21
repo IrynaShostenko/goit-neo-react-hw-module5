@@ -1,35 +1,37 @@
-import { Routes, Route, NavLink } from "react-router-dom";
-import clsx from 'clsx';
-import Home from "./pages/Home/Home";
-import NotFound from "./pages/NotFound/NotFound";
-import css from './App.module.css';
+import { Suspense, lazy } from "react";
+import { Routes, Route } from "react-router-dom";
+import Navigation from "./components/Navigation/Navigation.jsx";
 
+const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
+const MoviesPage = lazy(() => import("./pages/MoviesPage/MoviesPage.jsx"));
+const MovieDetailsPage = lazy(() =>
+  import("./pages/MovieDetailsPage/MovieDetailsPage.jsx")
+);
+const NotFoundPage = lazy(() =>
+  import("./pages/NotFoundPage/NotFoundPage.jsx")
+);
+const MovieCast = lazy(() =>
+  import("./components/MovieCast/MovieCast.jsx")
+);
+const MovieReviews = lazy(() =>
+  import("./components/MovieReviews/MovieReviews.jsx")
+);
 
-const buildLinkClass = ({ isActive }) => {
-  return clsx(css.link, isActive && css.active);
-};
-
-const App = () => {
+export default function App() {
   return (
-    <div>
-      <nav className={css.nav}>
-        <NavLink to="/" className={buildLinkClass}>
-          Home
-        </NavLink>
-        <NavLink to="/about" className={buildLinkClass}>
-          About
-        </NavLink>
-        <NavLink to="/products" className={buildLinkClass}>
-          Products
-        </NavLink>
-      </nav>
-  
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </div>
+    <>
+      <Navigation />
+      <Suspense fallback={<p style={{ padding: 16 }}>Loading…</p>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="reviews" element={<MovieReviews />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
+    </>
   );
-};
-
-export default App;
+}

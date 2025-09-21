@@ -1,0 +1,28 @@
+.main {
+    padding: 16px;
+}
+
+.form {
+    display: flex;
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 16px;
+    margin: 16px 0;
+}
+
+.back {
+    display: inline-block;
+    margin: 8px 0;
+}
+
+.subnav {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 12px 0;
+    margin: 16px 0;
+}

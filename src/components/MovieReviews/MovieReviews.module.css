@@ -1,0 +1,24 @@
+.list {
+    display: grid;
+    gap: 14px;
+    padding: 10px 0 0;
+    list-style: none;
+}
+
+.item {
+    border: 1px solid #eee;
+    padding: 12px;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.item p {
+    margin: 6px 0;
+}
+
+.item p:nth-child(2) {
+    display: -webkit-box;
+    -line-clamp: 8;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

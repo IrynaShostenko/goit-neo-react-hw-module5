@@ -1,0 +1,30 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+    gap: 12px;
+    padding: 12px 0 4px;
+    list-style: none;
+}
+
+.card {
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.card img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 10px;
+    background: #f2f2f2;
+}
+
+.card p {
+    margin: 6px 0 0;
+}
+
+.card b {
+    display: block;
+}
