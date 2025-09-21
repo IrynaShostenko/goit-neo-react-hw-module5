@@ -1,9 +1,6 @@
 import { Routes, Route, NavLink } from "react-router-dom";
 import clsx from 'clsx';
 import Home from "./pages/Home/Home";
-import About from "./pages/About/About";
-import Products from "./pages/Products/Products";
-import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import NotFound from "./pages/NotFound/NotFound";
 import css from './App.module.css';
 
@@ -29,9 +26,6 @@ const App = () => {
   
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/:productId" element={<ProductDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
